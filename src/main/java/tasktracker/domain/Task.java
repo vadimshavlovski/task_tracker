@@ -3,7 +3,6 @@ package tasktracker.domain;
 import org.springframework.hateoas.Identifiable;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 public class Task implements Identifiable<Long>{
