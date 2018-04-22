@@ -6,5 +6,6 @@ Rest API for task management
 - Spring Boot
 - Spring Data REST
 - Spring HATEOAS
+- HSQLDB
 
 
