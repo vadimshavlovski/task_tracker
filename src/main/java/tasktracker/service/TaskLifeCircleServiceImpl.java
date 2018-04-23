@@ -10,27 +10,29 @@ public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
 
     @Override
     public void setToInProgress(Task task) {
-        TaskStatus status = task.getStatus();
-        if(status == TaskStatus.NEW || status == TaskStatus.IMPLEMENTED){
-            task.setStatus(TaskStatus.IN_PROGRESS);
-        } else
-            throw new InvalidTaskStateException(TaskStatus.IN_PROGRESS);
+        setTaskStatus(task, TaskStatus.IN_PROGRESS, TaskStatus.NEW, TaskStatus.IMPLEMENTED);
     }
 
     @Override
     public void implement(Task task) {
-        if(task.getStatus() == TaskStatus.IN_PROGRESS){
-            task.setStatus(TaskStatus.IMPLEMENTED);
-        } else
-            throw new InvalidTaskStateException(TaskStatus.IMPLEMENTED);
+        setTaskStatus(task, TaskStatus.IMPLEMENTED, TaskStatus.IN_PROGRESS);
     }
 
     @Override
     public void close(Task task) {
-        if(task.getStatus() == TaskStatus.IMPLEMENTED){
-            task.setStatus(TaskStatus.CLOSED);
-        } else
-            throw new InvalidTaskStateException(TaskStatus.CLOSED);
+        setTaskStatus(task, TaskStatus.CLOSED, TaskStatus.IMPLEMENTED);
     }
 
+    private void setTaskStatus(Task task, TaskStatus newStatus, TaskStatus ... allowedStatuses){
+        boolean isStatusChanged = false;
+        for (TaskStatus allowedStatus : allowedStatuses) {
+            if (task.getStatus() == allowedStatus) {
+                task.setStatus(newStatus);
+                isStatusChanged = true;
+            }
+        }
+        if(!isStatusChanged)
+        throw new InvalidTaskStateException(newStatus);
+
+    }
 }
