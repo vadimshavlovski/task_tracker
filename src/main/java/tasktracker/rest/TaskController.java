@@ -33,7 +33,7 @@ public class TaskController {
     public PersistentEntityResource setToInProgress(@PathVariable("id") Long id, PersistentEntityResourceAssembler asm){
         Task task = findTask(id);
         lifeCircleService.setToInProgress(task);
-        return  asm.toFullResource(taskRepository.save(task));
+        return asm.toFullResource(taskRepository.save(task));
     }
 
     @RequestMapping(value = "/tasks/{id}/implement", method = RequestMethod.POST)
@@ -41,7 +41,7 @@ public class TaskController {
     public PersistentEntityResource implement(@PathVariable("id") Long id, PersistentEntityResourceAssembler asm){
         Task task = findTask(id);
         lifeCircleService.implement(task);
-        return  asm.toFullResource(taskRepository.save(task));
+        return asm.toFullResource(taskRepository.save(task));
     }
 
     @RequestMapping(value = "/tasks/{id}/close", method = RequestMethod.POST)
@@ -49,7 +49,7 @@ public class TaskController {
     public PersistentEntityResource close(@PathVariable("id") Long id, PersistentEntityResourceAssembler asm){
         Task task = findTask(id);
         lifeCircleService.close(task);
-        return  asm.toFullResource(taskRepository.save(task));
+        return asm.toFullResource(taskRepository.save(task));
     }
 
     private Task findTask(Long id){
