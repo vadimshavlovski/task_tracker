@@ -31,8 +31,9 @@ public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
                 isStatusChanged = true;
             }
         }
-        if(!isStatusChanged)
-        throw new InvalidTaskStateException(newStatus);
+        if(!isStatusChanged) {
+            throw new InvalidTaskStateException(newStatus);
+        }
 
     }
 }
