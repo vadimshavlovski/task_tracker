@@ -3,6 +3,7 @@ package tasktracker.service;
 import org.springframework.stereotype.Component;
 import tasktracker.domain.Task;
 import tasktracker.domain.TaskStatus;
+import tasktracker.exception.InvalidTaskStateException;
 
 @Component
 public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
@@ -13,7 +14,7 @@ public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
         if(status == TaskStatus.NEW || status == TaskStatus.IMPLEMENTED){
             task.setStatus(TaskStatus.IN_PROGRESS);
         } else
-            throw new RuntimeException("cannot set task to IN PROGRESS");
+            throw new InvalidTaskStateException(TaskStatus.IN_PROGRESS);
     }
 
     @Override
@@ -21,7 +22,7 @@ public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
         if(task.getStatus() == TaskStatus.IN_PROGRESS){
             task.setStatus(TaskStatus.IMPLEMENTED);
         } else
-            throw new RuntimeException("cannot set task to IMPLEMENTED");
+            throw new InvalidTaskStateException(TaskStatus.IMPLEMENTED);
     }
 
     @Override
@@ -29,7 +30,7 @@ public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
         if(task.getStatus() == TaskStatus.IMPLEMENTED){
             task.setStatus(TaskStatus.CLOSED);
         } else
-            throw new RuntimeException("cannot set task to CLOSED");
+            throw new InvalidTaskStateException(TaskStatus.CLOSED);
     }
 
 }
