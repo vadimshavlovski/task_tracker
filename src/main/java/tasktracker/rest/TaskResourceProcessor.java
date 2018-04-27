@@ -1,5 +1,6 @@
 package tasktracker.rest;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.support.RepositoryEntityLinks;
 import org.springframework.hateoas.Resource;
@@ -11,15 +12,14 @@ import tasktracker.domain.TaskStatus;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
+@AllArgsConstructor
 @Component
 public class TaskResourceProcessor implements ResourceProcessor<Resource<Task>>{
 
-    @Autowired
     private RepositoryEntityLinks entityLinks;
 
     @Override
     public Resource<Task> process(Resource<Task> resource) {
-
         Task task = resource.getContent();
 
         //update

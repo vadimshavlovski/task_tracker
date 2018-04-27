@@ -34,6 +34,5 @@ public class TaskLifeCircleServiceImpl implements TaskLifeCircleService{
         if(!isStatusChanged) {
             throw new InvalidTaskStateException(newStatus);
         }
-
     }
 }

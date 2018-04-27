@@ -1,25 +1,20 @@
 package tasktracker;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import tasktracker.domain.Task;
-import tasktracker.repository.TaskRepository;
 import tasktracker.domain.TaskStatus;
+import tasktracker.repository.TaskRepository;
 
-@Configuration
-public class AppConfig{
+@AllArgsConstructor
+@Component
+public class DBLoader implements CommandLineRunner {
 
-    @Autowired
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
-    @Bean
-    CommandLineRunner commandLineRunner(AppConfig dataLoader) {
-        return (o) -> dataLoader.load();
-    }
-
-    private void load(){
+    @Override
+    public void run(String... args) throws Exception {
         taskRepository.save(new Task("Create Enum", "Create enum for marital status with the ability to find an instance of id", TaskStatus.NEW));
         taskRepository.save(new Task("Strategy pattern", "Implement Strategy pattern", TaskStatus.NEW));
         taskRepository.save(new Task("Observer pattern", "Implement Observer pattern: Blogger, Subscriber, VasyaBlogger", TaskStatus.NEW));
@@ -27,5 +22,6 @@ public class AppConfig{
         taskRepository.save(new Task("Builder pattern", "Create immutable object (Builder pattern)", TaskStatus.NEW));
         taskRepository.save(new Task("Template method pattern", "Implement Template method", TaskStatus.NEW));
         taskRepository.save(new Task("Composite pattern", "Implement Composite pattern", TaskStatus.NEW));
+
     }
 }
