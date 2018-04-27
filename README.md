@@ -7,5 +7,6 @@ Rest API for task management
 - Spring Data REST
 - Spring HATEOAS
 - HSQLDB
+- Lombok
 
 
