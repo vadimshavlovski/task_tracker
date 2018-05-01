@@ -10,6 +10,10 @@ import javax.persistence.*;
 @Entity
 public class Task implements Identifiable<Long>{
 
+    //ETag (alternative for files - last modified mechanism) (http cache)
+    @Version
+    private Integer version;
+
     @Id
     @GeneratedValue
     private Long id;
