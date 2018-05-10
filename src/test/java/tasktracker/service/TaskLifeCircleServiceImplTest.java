@@ -34,7 +34,6 @@ public class TaskLifeCircleServiceImplTest {
     public void getInvalidTaskState() throws InvalidTaskStateException{
 
         task.setStatus(TaskStatus.CLOSED);
-
         taskLifeCircleService.implement(task);
     }
 }
