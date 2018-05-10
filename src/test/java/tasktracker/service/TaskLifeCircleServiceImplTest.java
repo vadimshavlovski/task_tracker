@@ -13,7 +13,7 @@ public class TaskLifeCircleServiceImplTest {
     private static Task task = new Task();
 
     @Test
-    public void setToInProgressTaskTest() throws Exception {
+    public void setNewTaskToInProgress() throws Exception {
 
         task.setStatus(TaskStatus.NEW);
         taskLifeCircleService.setToInProgress(task);
@@ -22,7 +22,7 @@ public class TaskLifeCircleServiceImplTest {
     }
 
     @Test
-    public void setToInProgressImplementedTaskTest() throws Exception {
+    public void setImplementedTaskToInProgress() throws Exception {
 
         task.setStatus(TaskStatus.IMPLEMENTED);
         taskLifeCircleService.setToInProgress(task);
@@ -31,7 +31,7 @@ public class TaskLifeCircleServiceImplTest {
     }
 
     @Test(expected = InvalidTaskStateException.class)
-    public void getInvalidTaskStateTest() throws InvalidTaskStateException{
+    public void getInvalidTaskState() throws InvalidTaskStateException{
 
         task.setStatus(TaskStatus.CLOSED);
 
