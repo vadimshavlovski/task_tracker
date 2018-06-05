@@ -39,12 +39,12 @@ Hypermedia Rest API for task management :fire:
 
 ### Hypermedia example
 
-For NEW task you can modify task (PUT, PATCH), delete task (DELETE) or set task status to IN_PROGRESS. Hypermedia level shows it in "_links" field:
+1. For NEW task you can modify task (PUT, PATCH), delete task (DELETE) or set task status to IN_PROGRESS. Hypermedia level shows it in "_links" field:
 
 curl http://localhost:8091/tasks/1/ 
 
 Response:
-```javascript
+```java
 {
   "name" : "Create Enum",
   "description" : "Create enum for marital status with the ability to find an instance of id",
@@ -66,5 +66,28 @@ Response:
       "href" : "http://localhost:8091/tasks/1/to-in-progress"
     }
   }
+}
+```
+2. For IN_PROGRESS task you can set task to IMPLEMENTED:
+
+curl -X POST http://localhost:8091/tasks/1/to-in-progress
+
+Response:
+```java
+{
+    "name": "Create Enum",
+    "description": "Create enum for marital status with the ability to find an instance of id",
+    "status": "IN_PROGRESS",
+    "_links": {
+        "self": {
+            "href": "http://localhost:8091/tasks/1"
+        },
+        "task": {
+            "href": "http://localhost:8091/tasks/1"
+        },
+        "implement": {
+            "href": "http://localhost:8091/tasks/1/implement"
+        }
+    }
 }
 ```
