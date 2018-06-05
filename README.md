@@ -11,25 +11,25 @@ Rest API for task management
 
 Todo Rest Api table:
 ### REST API
-| URI                           | Method | Description           | Richardson Maturity Model Level |
-| ---------------------         | ----   | ------------------------|---------------------------------|
-|/tasks/                        | GET    | Display all tasks       | level 1 - Resources             |
-|/tasks/search/in-progress      | GET    | Display all tasks in in-progress status| level 1 - Resources             |
-|/tasks/{taskId}                | GET    | Get  task by id         | level 1 - Resources             |
-|/tasks/                        | POST   | Add new task            | level 2 - HTTP verbs            |
-|/tasks/{taskId}                | PUT    | Modify task by id       | level 2 - HTTP verbs            |
-|/tasks/{taskId}                | DELETE  | Delete task by id      | level 2 - HTTP verbs            |
-|/tasks/{taskId}/to-in-progress | POST | set task status to in-progress| level 3 - Hypermedia controls|
-|/tasks/{taskId}/implement      | POST | set task status to implement  | level 3 - Hypermedia controls|
-|/tasks/{taskId}/close          | POST | set task status to close      | level 3 - Hypermedia controls|
-|                               |      |                         |  |
+| URI                           | Method | Description           |
+| ---------------------         | ----   | ------------------------|
+|/tasks/                        | GET    | Display all tasks       | 
+|/tasks/search/in-progress      | GET    | Display all tasks in in-progress status| 
+|/tasks/{taskId}                | GET    | Get  task by id         | 
+|/tasks/                        | POST   | Add new task            | 
+|/tasks/{taskId}                | PUT    | Modify task by id       | 
+|/tasks/{taskId}                | DELETE  | Delete task by id      | 
+|/tasks/{taskId}/to-in-progress | POST | set task status to in-progress| 
+|/tasks/{taskId}/implement      | POST | set task status to implement  | 
+|/tasks/{taskId}/close          | POST | set task status to close      | 
+|                               |      |                         |  
 
-### Hypermedia level example:
+### Hypermedia example:
 
 curl http://localhost:8091/tasks/1/ 
 
 Response:
-```json
+```java
 {
   "name" : "Create Enum",
   "description" : "Create enum for marital status with the ability to find an instance of id",
