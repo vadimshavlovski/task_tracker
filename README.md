@@ -1,5 +1,5 @@
 ### Application
-Rest API for task management
+Hypermedia Rest API for task management :fire:
 
 ### Technologies
 - Java 8
@@ -42,7 +42,7 @@ Rest API for task management
 curl http://localhost:8091/tasks/1/ 
 
 Response:
-```java
+```javascript
 {
   "name" : "Create Enum",
   "description" : "Create enum for marital status with the ability to find an instance of id",
