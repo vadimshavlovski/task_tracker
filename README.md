@@ -19,9 +19,9 @@ Hypermedia Rest API for task management :fire:
 |/tasks/{taskId}                | PUT    | Modify task by id       | 
 |/tasks/{taskId}                | PATCH  | Merge task by id       | 
 |/tasks/{taskId}                | DELETE | Delete task by id      | 
-|/tasks/{taskId}/to-in-progress | POST | set task status to in-progress| 
-|/tasks/{taskId}/implement      | POST | set task status to implement  | 
-|/tasks/{taskId}/close          | POST | set task status to close      | 
+|/tasks/{taskId}/to-in-progress | POST | Set task status to in-progress| 
+|/tasks/{taskId}/implement      | POST | Set task status to implement  | 
+|/tasks/{taskId}/close          | POST | Set task status to close      | 
 |                               |      |                         |  
 
 ### Support HTTP Codes
@@ -38,6 +38,8 @@ Hypermedia Rest API for task management :fire:
 
 
 ### Hypermedia example
+
+For NEW task you can modify task (PUT, PATCH), delete task (DELETE) or set task status to IN_PROGRESS. Hypermedia level shows it in "_links" field:
 
 curl http://localhost:8091/tasks/1/ 
 
