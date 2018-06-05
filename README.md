@@ -37,7 +37,7 @@ Rest API for task management
 
 
 
-### Hypermedia example:
+### Hypermedia example
 
 curl http://localhost:8091/tasks/1/ 
 
