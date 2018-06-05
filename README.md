@@ -37,7 +37,7 @@ Hypermedia Rest API for task management :fire:
 
 
 
-### Hypermedia example
+### Hypermedia level
 
 The Hypermedia level is shown in "_links" field:
 
