@@ -11,9 +11,9 @@ Rest API for task management
 
 Todo Rest Api table:
 ### REST API
-| URI                    | Method | Description           |
-| ---------------------  | ---- | ------------------------|
-|/tasks/                 | GET  | Display all tasks       |
-|/tasks/{taskId}         | GET  | Get  task by id         |
+| URI                    | Method | Description           | Richardson Maturity Model Level |
+| ---------------------  | ---- | ------------------------|---------------------------------|
+|/tasks/                 | GET  | Display all tasks       | level 1 - Resources             |
+|/tasks/{taskId}         | GET  | Get  task by id         | level 2 - HTTP verbs            |
 |                        |      |                         |
 
