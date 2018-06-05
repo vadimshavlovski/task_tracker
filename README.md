@@ -39,55 +39,83 @@ Hypermedia Rest API for task management :fire:
 
 ### Hypermedia example
 
-1. For NEW task you can modify task (PUT, PATCH), delete task (DELETE) or set task status to IN_PROGRESS. Hypermedia level shows it in "_links" field:
+The Hypermedia level is shown in "_links" field:
 
-curl http://localhost:8091/tasks/1/ 
+1. For NEW task you can modify task (PUT, PATCH), delete task (DELETE) or set task status to IN_PROGRESS.
 
-Response:
-```java
-{
-  "name" : "Create Enum",
-  "description" : "Create enum for marital status with the ability to find an instance of id",
-  "status" : "NEW",
-  "_links" : {
-    "self" : {
-      "href" : "http://localhost:8091/tasks/1"
-    },
-    "task" : {
-      "href" : "http://localhost:8091/tasks/1"
-    },
-    "update" : {
-      "href" : "http://localhost:8091/tasks/1"
-    },
-    "delete" : {
-      "href" : "http://localhost:8091/tasks/1"
-    },
-    "set-to-in_progress" : {
-      "href" : "http://localhost:8091/tasks/1/to-in-progress"
-    }
-  }
-}
-```
+        curl http://localhost:8091/tasks/1/ 
+
+        Response:
+        ```java
+        {
+          "name" : "Create Enum",
+          "description" : "Create enum for marital status with the ability to find an instance of id",
+          "status" : "NEW",
+          "_links" : {
+            "self" : {
+              "href" : "http://localhost:8091/tasks/1"
+            },
+            "task" : {
+              "href" : "http://localhost:8091/tasks/1"
+            },
+            "update" : {
+              "href" : "http://localhost:8091/tasks/1"
+            },
+            "delete" : {
+              "href" : "http://localhost:8091/tasks/1"
+            },
+            "set-to-in_progress" : {
+              "href" : "http://localhost:8091/tasks/1/to-in-progress"
+            }
+          }
+        }
+        ```
 2. For IN_PROGRESS task you can set task to IMPLEMENTED:
 
-curl -X POST http://localhost:8091/tasks/1/to-in-progress
+        curl -X POST http://localhost:8091/tasks/1/to-in-progress
 
-Response:
-```java
-{
-    "name": "Create Enum",
-    "description": "Create enum for marital status with the ability to find an instance of id",
-    "status": "IN_PROGRESS",
-    "_links": {
-        "self": {
-            "href": "http://localhost:8091/tasks/1"
-        },
-        "task": {
-            "href": "http://localhost:8091/tasks/1"
-        },
-        "implement": {
-            "href": "http://localhost:8091/tasks/1/implement"
+        Response:
+        ```java
+        {
+            "name": "Create Enum",
+            "description": "Create enum for marital status with the ability to find an instance of id",
+            "status": "IN_PROGRESS",
+            "_links": {
+                "self": {
+                    "href": "http://localhost:8091/tasks/1"
+                },
+                "task": {
+                    "href": "http://localhost:8091/tasks/1"
+                },
+                "implement": {
+                    "href": "http://localhost:8091/tasks/1/implement"
+                }
+            }
         }
-    }
-}
-```
+        ```
+3. For IMPLEMENT task you can return task back to IN_PROGRESS or set status to CLOSE:
+
+        curl -X POST http://localhost:8091/tasks/1/implement
+
+        Response:
+        ```java
+        {
+            "name": "Create Enum",
+            "description": "Create enum1 for marital status with the ability to find an instance of id",
+            "status": "IMPLEMENTED",
+            "_links": {
+                "self": {
+                    "href": "http://localhost:8091/tasks/1"
+                },
+                "task": {
+                    "href": "http://localhost:8091/tasks/1"
+                },
+                "set-to-in_progress": {
+                    "href": "http://localhost:8091/tasks/1/to-in-progress"
+                },
+                "close": {
+                    "href": "http://localhost:8091/tasks/1/close"
+                }
+            }
+        }
+        ```
