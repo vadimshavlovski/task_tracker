@@ -9,7 +9,6 @@ Rest API for task management
 - HSQLDB
 - Lombok
 
-Todo Rest Api table:
 ### REST API
 | URI                           | Method | Description           |
 | ---------------------         | ----   | ------------------------|
@@ -18,11 +17,25 @@ Todo Rest Api table:
 |/tasks/{taskId}                | GET    | Get  task by id         | 
 |/tasks/                        | POST   | Add new task            | 
 |/tasks/{taskId}                | PUT    | Modify task by id       | 
-|/tasks/{taskId}                | DELETE  | Delete task by id      | 
+|/tasks/{taskId}                | PATCH  | Merge task by id       | 
+|/tasks/{taskId}                | DELETE | Delete task by id      | 
 |/tasks/{taskId}/to-in-progress | POST | set task status to in-progress| 
 |/tasks/{taskId}/implement      | POST | set task status to implement  | 
 |/tasks/{taskId}/close          | POST | set task status to close      | 
 |                               |      |                         |  
+
+### Support HTTP Codes
+| Code   |  Status                |
+|--------|------------------------|
+|200     | Ok                     |
+|201     | Created                |
+|304     | Not Modified           |
+|400     | Bad request            |
+|404     | Not Found              |
+|409     | Conflict               |
+|        |                        |
+
+
 
 ### Hypermedia example:
 
