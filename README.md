@@ -93,7 +93,7 @@ The Hypermedia level is shown in "_links" field:
             }
         }
         ```
-3. For IMPLEMENT task you can return task back to IN_PROGRESS or set status to CLOSE:
+3. For IMPLEMENTED task you can return task back to IN_PROGRESS or set status to CLOSED:
 
         curl -X POST http://localhost:8091/tasks/1/implement
 
